@@ -1,0 +1,122 @@
+CONFIGURATEUR TRESSE DE LIT — MODE D'EMPLOI (v9, refonte "sans code")
+========================================================================
+
+Le configurateur a été réorganisé pour que tu puisses gérer les photos et
+les couleurs toi-même, sans jamais toucher au code (app.js). Il y a
+maintenant 3 dossiers/fichiers à connaître :
+
+  images/photos-tissus/   <- TES photos de tissus. C'est le seul dossier
+                              que tu as besoin d'ouvrir au quotidien.
+  config/tissus.json      <- La liste des matières et couleurs, et quelle
+                              photo va avec quel nom. C'est le seul fichier
+                              à modifier pour changer/ajouter une couleur.
+  images/technique/       <- Fichiers techniques (gabarits de la tresse,
+                              photo de fond, ombrage). Tu n'as normalement
+                              jamais besoin d'y toucher.
+
+Le fichier app.js (le "code") n'a plus besoin d'être modifié pour tout ce
+qui concerne les photos et les couleurs.
+
+
+1) CHANGER UNE PHOTO EXISTANTE
+--------------------------------
+Exemple : remplacer la photo du "Camel" en Double gaze uni.
+
+1. Ouvre le dossier images/photos-tissus/double-gaze-uni/
+2. Repère le fichier camel.jpeg (le nom de fichier est visible dans
+   config/tissus.json, à côté du nom "Camel" — voir point 4 ci-dessous
+   pour savoir lire ce fichier).
+3. Remplace ce fichier par ta nouvelle photo, EN GARDANT EXACTEMENT LE
+   MÊME NOM (camel.jpeg). Le plus simple : ouvre ta nouvelle photo dans
+   un logiciel, fais "Enregistrer sous", et donne-lui le nom camel.jpeg
+   à la place de l'ancien fichier.
+   -> Si ta nouvelle photo n'est pas au format .jpeg (par exemple .png ou
+      .webp), demande-moi et je mettrai à jour le fichier de config en
+      une minute (ou renomme le fichier config/tissus.json toi-même,
+      voir point 4).
+4. C'est tout : rien d'autre à modifier. Le site utilisera la nouvelle
+   photo au prochain chargement de la page.
+
+Conseil photo : les meilleures photos sont des gros plans de tissu
+"pincé" en rosace (comme les photos actuelles), carrés de préférence.
+Le site zoome et recadre automatiquement pour éviter le centre flou du
+tourbillon — pas besoin de retoucher la photo toi-même.
+
+
+2) AJOUTER UNE NOUVELLE COULEUR À UNE MATIÈRE EXISTANTE
+----------------------------------------------------------
+Exemple : ajouter "Gris perle" en Double gaze uni.
+
+1. Mets ta photo dans images/photos-tissus/double-gaze-uni/
+   Nomme le fichier simplement, sans espace ni accent, par exemple :
+   gris-perle.jpeg
+
+2. Ouvre config/tissus.json avec un éditeur de texte simple (Bloc-notes
+   sur Windows, TextEdit sur Mac — évite Word). C'est un peu technique à
+   regarder mais tu n'as qu'à copier-coller une ligne et changer 2 mots.
+
+3. Trouve le bloc "Double gaze uni" (Ctrl+F pour chercher). Tu verras une
+   liste "couleurs" qui ressemble à ça :
+
+     {"nom": "Camel", "photo": "camel.jpeg"},
+     {"nom": "Vert sauge", "photo": "vert-sauge.jpeg"},
+
+4. Ajoute une nouvelle ligne sur ce modèle, avec une virgule à la fin de
+   la ligne précédente :
+
+     {"nom": "Vert sauge", "photo": "vert-sauge.jpeg"},
+     {"nom": "Gris perle", "photo": "gris-perle.jpeg"},
+
+5. Enregistre le fichier. C'est fait — "Gris perle" apparaît dans le menu
+   déroulant du site avec ta photo.
+
+Si tu préfères, envoie-moi juste la photo et le nom voulu, je fais
+l'ajout en quelques secondes.
+
+
+3) AJOUTER UNE TOUTE NOUVELLE MATIÈRE (ex: "Velours")
+---------------------------------------------------------
+C'est la seule opération qui nécessite mon aide (ou celle d'un
+développeur) : une nouvelle matière a besoin d'un "gabarit" (la forme
+des brins découpée sur mesure), qui est une image technique que je dois
+générer à partir d'une photo de ton tissu. Envoie-moi simplement :
+  - le nom de la nouvelle matière,
+  - une photo représentative du tissu (pincée en rosace, comme les
+    autres),
+  - les couleurs disponibles (photo + nom pour chacune).
+Je m'occupe du reste (gabarit technique + ajout dans le fichier de
+config) et je te renvoie le projet prêt à l'emploi.
+
+
+4) COMPRENDRE config/tissus.json EN 30 SECONDES
+----------------------------------------------------
+Le fichier est organisé comme ça pour chaque matière :
+
+  {
+    "id": "double-gaze-uni",        <- identifiant interne, n'y touche pas
+    "nom": "Double gaze uni",       <- nom affiché sur le site
+    "ombrage": true,                <- laisse tel quel
+    "gabarit3": [...],              <- fichiers techniques, n'y touche pas
+    "gabarit4": [...],              <- fichiers techniques, n'y touche pas
+    "dossierPhotos": "images/photos-tissus/double-gaze-uni",
+    "couleurs": [
+      {"nom": "Camel", "photo": "camel.jpeg"},
+      ...
+    ]
+  }
+
+Les 2 seules choses que tu modifies au quotidien : le nom affiché d'une
+couleur ("nom") et son fichier photo ("photo"), dans la liste
+"couleurs".
+
+Attention à bien garder les virgules et les guillemets exactement comme
+dans les lignes existantes — copie une ligne qui marche et modifie juste
+le texte à l'intérieur des guillemets, c'est le plus sûr.
+
+
+5) SI QUELQUE CHOSE NE S'AFFICHE PLUS
+------------------------------------------
+Le cas le plus fréquent : une faute de frappe dans config/tissus.json
+(virgule oubliée, guillemet manquant) empêche TOUT le configurateur de
+se charger. Si ça arrive, la solution la plus simple est de renvoyer le
+fichier tel quel et je corrigerai la faute de syntaxe.

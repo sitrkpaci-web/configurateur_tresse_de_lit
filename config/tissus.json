@@ -1,0 +1,115 @@
+{
+  "matieres": [
+    {
+      "id": "double-gaze-uni",
+      "nom": "Double gaze uni",
+      "ombrage": true,
+      "dossierPhotos": "images/photos-tissus/double-gaze-uni",
+      "gabarit3": ["images/technique/3brins1_doublegazeblanc.png", "images/technique/3brins2_doublegazeblanc.png", "images/technique/3brins3_doublegazeblanc.png"],
+      "gabarit4": ["images/technique/4brins_doudou1_doublegazeblanc.png", "images/technique/4brins_doudou2_doublegazeblanc.png", "images/technique/4brins_doudou3_doublegazeblanc.png", "images/technique/4brins_doudou4_doublegazeblanc.png"],
+      "couleurs": [
+        {"nom": "Rose poudré", "photo": "rose-poudre.webp"},
+        {"nom": "Beige clair", "photo": "beige-clair.jpeg"},
+        {"nom": "Rose clair", "photo": "rose-clair.jpeg"},
+        {"nom": "Camel", "photo": "camel.jpeg"},
+        {"nom": "Vert sauge", "photo": "vert-sauge.jpeg"},
+        {"nom": "Bleu gris", "photo": "bleu-gris.jpeg"},
+        {"nom": "Vert olive", "photo": "vert-olive.jpeg"},
+        {"nom": "Écru naturel", "photo": "ecru-naturel.webp"},
+        {"nom": "Bleu ciel", "photo": "bleu-ciel.webp"},
+        {"nom": "Moutarde", "photo": "moutarde.png"},
+        {"nom": "Blanc cassé", "photo": "blanc-casse.jpeg"},
+        {"nom": "Blanc", "photo": "blanc.jpeg"}
+      ]
+    },
+    {
+      "id": "double-gaze-pois-or",
+      "nom": "Double gaze à pois or",
+      "ombrage": true,
+      "dossierPhotos": "images/photos-tissus/double-gaze-pois-or",
+      "gabarit3": ["images/technique/3brins1_doublegazepoisorblanc.png", "images/technique/3brins2_doublegazepoisorblanc.png", "images/technique/3brins3_doublegazepoisorblanc.png"],
+      "gabarit4": ["images/technique/4brins_doudou1_doublegazepoisorblanc.png", "images/technique/4brins_doudou2_doublegazepoisorblanc.png", "images/technique/4brins_doudou3_doublegazepoisorblanc.png", "images/technique/4brins_doudou4_doublegazepoisorblanc.png"],
+      "couleurs": [
+        {"nom": "Blanc à pois or", "photo": "blanc-a-pois-or.jpeg"},
+        {"nom": "Écru à pois or", "photo": "ecru-a-pois-or.jpeg"},
+        {"nom": "Camel à pois or", "photo": "camel-a-pois-or.jpeg"},
+        {"nom": "Vieux rose à pois or", "photo": "vieux-rose-a-pois-or.jpeg"},
+        {"nom": "Bleu pétrole à pois or", "photo": "bleu-petrole-a-pois-or.jpeg"},
+        {"nom": "Bleu marine à pois or", "photo": "bleu-marine-a-pois-or.jpeg"},
+        {"nom": "Terracotta à pois or", "photo": "terracotta-a-pois-or.jpeg"},
+        {"nom": "Terracotta foncé à pois or", "photo": "terracotta-fonce-a-pois-or.jpeg"},
+        {"nom": "Moutarde à pois or", "photo": "moutarde-a-pois-or.jpeg"},
+        {"nom": "Rose poudré à pois or", "photo": "rose-poudre-a-pois-or.jpeg"}
+      ]
+    },
+    {
+      "id": "nid-abeille",
+      "nom": "Nid d'abeille",
+      "ombrage": true,
+      "dossierPhotos": "images/photos-tissus/nid-abeille",
+      "gabarit3": ["images/technique/3brinsnidabeille1.png", "images/technique/3brinsnidabeille2.png", "images/technique/3brinsnidabeille3.png"],
+      "gabarit4": ["images/technique/4brins_doudou1_nidabeilleblanc.png", "images/technique/4brins_doudou2_nidabeilleblanc.png", "images/technique/4brins_doudou3_nidabeilleblanc.png", "images/technique/4brins_doudou4_nidabeilleblanc.png"],
+      "couleurs": [
+        {"nom": "Beige", "photo": "beige.jpeg"},
+        {"nom": "Gris beige", "photo": "gris-beige.jpeg"},
+        {"nom": "Vieux rose", "photo": "vieux-rose.jpeg"},
+        {"nom": "Terracotta", "photo": "terracotta.jpeg"},
+        {"nom": "Rose clair", "photo": "rose-clair.jpeg"},
+        {"nom": "Rose poudré", "photo": "rose-poudre.jpeg"},
+        {"nom": "Bleu ciel", "photo": "bleu-ciel.jpeg"},
+        {"nom": "Bleu marine", "photo": "bleu-marine.jpeg"},
+        {"nom": "Camel", "photo": "camel.webp"},
+        {"nom": "Taupe", "photo": "taupe.jpeg"},
+        {"nom": "Rose saumon", "photo": "rose-saumon.webp"},
+        {"nom": "Vert sauge", "photo": "vert-sauge.jpeg"},
+        {"nom": "Vert menthe", "photo": "vert-menthe.jpeg"},
+        {"nom": "Beige taupe", "photo": "beige-taupe.jpeg"}
+      ]
+    },
+    {
+      "id": "sherpa",
+      "nom": "Sherpa",
+      "ombrage": true,
+      "dossierPhotos": "images/photos-tissus/sherpa",
+      "gabarit3": ["images/technique/3brins1_sherpablanc.png", "images/technique/3brins2_sherpablanc.png", "images/technique/3brins3_sherpablanc.png"],
+      "gabarit4": ["images/technique/4brins_doudou1_sherpablanc.png", "images/technique/4brins_doudou2_sherpablanc.png", "images/technique/4brins_doudou3_sherpablanc.png", "images/technique/4brins_doudou4_sherpablanc.png"],
+      "couleurs": [
+        {"nom": "Écru", "photo": "ecru.jpeg"},
+        {"nom": "Blanc", "photo": "blanc.jpeg"},
+        {"nom": "Beige clair", "photo": "beige-clair.jpeg"}
+      ]
+    },
+    {
+      "id": "fantaisies",
+      "nom": "Fantaisies",
+      "ombrage": false,
+      "dossierPhotos": "images/photos-tissus/fantaisies",
+      "gabarit3": ["images/technique/3brinsdoudou1.png", "images/technique/3brinsdoudou2.png", "images/technique/3brinsdoudou3.png"],
+      "gabarit4": ["images/technique/4brinsdoudou1.png", "images/technique/4brinsdoudou2.png", "images/technique/4brinsdoudou3.png", "images/technique/4brinsdoudou4.png"],
+      "couleurs": [
+        {"nom": "Rose poudré à pois dorés", "photo": "rose-poudre-a-pois-dores.jpeg"},
+        {"nom": "Fleurs multicolores", "photo": "fleurs-multicolores.jpeg"},
+        {"nom": "Fleurs rouges et bleues", "photo": "fleurs-rouges-et-bleues.jpeg"},
+        {"nom": "Feuillage et petits cœurs dorés", "photo": "feuillage-et-petits-curs-dores.jpeg"},
+        {"nom": "Petits cœurs dorés", "photo": "petits-curs-dores.webp"},
+        {"nom": "Petites fleurs brunes", "photo": "petites-fleurs-brunes.webp"},
+        {"nom": "Fleurs et feuillage gris", "photo": "fleurs-et-feuillage-gris.jpeg"},
+        {"nom": "Petites fleurs roses", "photo": "petites-fleurs-roses.jpeg"},
+        {"nom": "Faon et fleurs", "photo": "faon-et-fleurs.jpeg"},
+        {"nom": "Fleurs roses et feuillage", "photo": "fleurs-roses-et-feuillage.webp"},
+        {"nom": "Animaux de la forêt", "photo": "animaux-de-la-foret.webp"},
+        {"nom": "Arc-en-ciel et bébés animaux", "photo": "arc-en-ciel-et-bebes-animaux.webp"},
+        {"nom": "Jungle tropicale", "photo": "jungle-tropicale.webp"},
+        {"nom": "Petites fleurs rouges", "photo": "petites-fleurs-rouges.jpeg"},
+        {"nom": "Animaux et fleurs", "photo": "animaux-et-fleurs.jpeg"},
+        {"nom": "Animaux de la savane", "photo": "animaux-de-la-savane.webp"},
+        {"nom": "Animaux et feuillage", "photo": "animaux-et-feuillage.jpeg"},
+        {"nom": "Animaux marins et feuillage", "photo": "animaux-marins-et-feuillage.webp"},
+        {"nom": "Fleurs pastel", "photo": "fleurs-pastel.jpeg"},
+        {"nom": "Renards et animaux", "photo": "renards-et-animaux.jpeg"},
+        {"nom": "Montgolfières", "photo": "montgolfieres.webp"},
+        {"nom": "Animaux et motifs", "photo": "animaux-et-motifs.jpeg"}
+      ]
+    }
+  ]
+}

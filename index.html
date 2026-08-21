@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configurateur Tresse de Lit</title>
+<style>
+:root{--primary:#f5ebe6;--accent:#d4a373;--text:#4a3f35;--bg:#faf7f5}
+*{box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);margin:0;padding:15px;display:flex;justify-content:center}
+.container{max-width:760px;width:100%;background:#fff;padding:20px;border-radius:20px;box-shadow:0 8px 25px rgba(0,0,0,.06)}
+h2{text-align:center;font-size:1.2rem;text-transform:uppercase;letter-spacing:1px;margin:5px 0 20px}
+.section-title{font-weight:600;margin:15px 0 10px;font-size:.9rem}
+.zone-visuel{position:relative;width:100%;background-image:url('images/technique/arriere-plan-apercu-tresse.jpeg');background-size:cover;background-position:center;margin-bottom:20px;border:1px solid #f0eaee;border-radius:15px;overflow:hidden;aspect-ratio:1749/1250}.zone-visuel::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.6);z-index:1;pointer-events:none;transition:opacity .25s ease}.zone-visuel.a-config::before{opacity:.8}.braid-stage{position:absolute;inset:0;overflow:hidden;display:block;z-index:2}.placeholder-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#8f8176;font-size:.85rem;text-align:center;padding:20px;z-index:30;background:rgba(255,255,255,.72)}.preview-label{font-size:.75rem;color:#8c8177;text-align:center;margin-top:2px}.texture-layer{position:absolute;inset:0;width:100%;height:100%;background-repeat:no-repeat;background-position:center;background-size:100% 100%;background-blend-mode:multiply;mask-repeat:no-repeat;-webkit-mask-repeat:no-repeat;mask-size:100% 100%;-webkit-mask-size:100% 100%;mask-position:center;-webkit-mask-position:center;z-index:5;opacity:0;transition:opacity .25s ease;mix-blend-mode:multiply;filter:saturate(.95)}.texture-layer::after{content:''}.t3-1{z-index:5}.t3-2{z-index:6}.t3-3{z-index:7}.t4-1{z-index:5}.t4-2{z-index:6}.t4-3{z-index:7}.t4-4{z-index:8}.overlay-structure{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;object-position:center;z-index:10;pointer-events:none;opacity:.42;mix-blend-mode:multiply}.grid-options{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:15px}
+.btn-option{background:#fff;border:1px solid #e0e0e0;padding:10px 5px;border-radius:20px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .2s ease;color:var(--text);text-align:center}
+.btn-option.active{background:var(--primary);border-color:var(--accent);font-weight:600}
+.select-longueur{width:100%;border:1px solid #e8e2dc;padding:10px;border-radius:12px;background:#fff;color:var(--text);font-size:.9rem;outline:none;margin-bottom:15px}
+.brin-selector{background:#fff;border:1px solid #e8e2dc;border-radius:12px;padding:12px;margin-bottom:10px}
+.brin-header{font-weight:600;font-size:.85rem;margin-bottom:8px;color:var(--accent)}
+.select-group{display:flex;gap:8px}
+.select-group select{flex:1;min-width:0;border:1px solid #ddd;padding:8px 10px;border-radius:8px;background:#fff;color:var(--text);font-size:.85rem;outline:none}
+.swatch{width:58px;height:42px;border-radius:8px;background-size:220% auto;background-position:10% 10%;background-repeat:no-repeat;border:1px solid #eee;display:none;margin-top:8px}
+.btn-commander{display:block;width:100%;background:var(--accent);color:white;border:0;padding:14px;border-radius:25px;font-size:.95rem;font-weight:600;cursor:pointer;margin-top:20px;box-shadow:0 4px 15px rgba(212,163,115,.3)}
+.note{font-size:.75rem;color:#8c8177;line-height:1.45;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>Personnalisation de la tresse</h2>
+<div class="zone-visuel" id="zone-visuel">
+  <div class="placeholder-text" id="placeholder">Composez votre tresse pour voir le résultat en direct ✨</div>
+  <div class="braid-stage" id="braid-stage" style="display:none">
+    <div class="texture-layer t3-1" id="preview-1"></div>
+    <div class="texture-layer t3-2" id="preview-2"></div>
+    <div class="texture-layer t3-3" id="preview-3"></div>
+    <div class="texture-layer t4-1" id="preview-4-1"></div>
+    <div class="texture-layer t4-2" id="preview-4-2"></div>
+    <div class="texture-layer t4-3" id="preview-4-3"></div>
+    <div class="texture-layer t4-4" id="preview-4-4"></div>
+    <img class="overlay-structure" id="braid-overlay" src="images/IMG_3734-overlay.png" alt="Relief de la tresse">
+  </div>
+</div>
+
+<div class="section-title">1. Épaisseur de la tresse :</div>
+<div class="grid-options">
+<button type="button" class="btn-option active" onclick="changerBrins(3,this)">3 brins</button>
+<button type="button" class="btn-option" onclick="changerBrins(4,this)">4 brins</button>
+</div>
+
+<div class="section-title">2. Longueur de la tresse :</div>
+<select id="select-longueur" class="select-longueur">
+<option value="">-- Choisissez la longueur --</option>
+<option value="3m">3 mètres</option><option value="3m50">3,50 mètres</option><option value="4m">4 mètres</option>
+<option value="4m50">4,50 mètres</option><option value="5m">5 mètres</option><option value="5m50">5,50 mètres</option><option value="6m">6 mètres</option>
+</select>
+
+<div class="section-title">3. Choix du tissu et de la couleur :</div>
+<div id="conteneur-brins"></div>
+<button type="button" class="btn-commander" onclick="envoyerCommande()">Valider &amp; Payer sur SumUp</button>
+<div class="note">Les visuels fournis par Laura restent utilisés pour les choix. L’aperçu applique les structures transparentes dédiées afin de conserver la forme et le relief de la tresse. Les motifs Fantaisie utilisent leur image correspondante.</div>
+</div>
+
+<script type="application/json" id="config-tissus">
+{
+  "matieres": [
+    {
+      "id": "double-gaze-uni",
+      "nom": "Double gaze uni",
+      "ombrage": true,
+      "dossierPhotos": "images/photos-tissus/double-gaze-uni",
+      "gabarit3": ["images/technique/3brins1_doublegazeblanc.png", "images/technique/3brins2_doublegazeblanc.png", "images/technique/3brins3_doublegazeblanc.png"],
+      "gabarit4": ["images/technique/4brins_doudou1_doublegazeblanc.png", "images/technique/4brins_doudou2_doublegazeblanc.png", "images/technique/4brins_doudou3_doublegazeblanc.png", "images/technique/4brins_doudou4_doublegazeblanc.png"],
+      "couleurs": [
+        {"nom": "Rose poudré", "photo": "rose-poudre.webp"},
+        {"nom": "Beige clair", "photo": "beige-clair.jpeg"},
+        {"nom": "Rose clair", "photo": "rose-clair.jpeg"},
+        {"nom": "Camel", "photo": "camel.jpeg"},
+        {"nom": "Vert sauge", "photo": "vert-sauge.jpeg"},
+        {"nom": "Bleu gris", "photo": "bleu-gris.jpeg"},
+        {"nom": "Vert olive", "photo": "vert-olive.jpeg"},
+        {"nom": "Écru naturel", "photo": "ecru-naturel.webp"},
+        {"nom": "Bleu ciel", "photo": "bleu-ciel.webp"},
+        {"nom": "Moutarde", "photo": "moutarde.png"},
+        {"nom": "Blanc cassé", "photo": "blanc-casse.jpeg"},
+        {"nom": "Blanc", "photo": "blanc.jpeg"}
+      ]
+    },
+    {
+      "id": "double-gaze-pois-or",
+      "nom": "Double gaze à pois or",
+      "ombrage": true,
+      "dossierPhotos": "images/photos-tissus/double-gaze-pois-or",
+      "gabarit3": ["images/technique/3brins1_doublegazepoisorblanc.png", "images/technique/3brins2_doublegazepoisorblanc.png", "images/technique/3brins3_doublegazepoisorblanc.png"],
+      "gabarit4": ["images/technique/4brins_doudou1_doublegazepoisorblanc.png", "images/technique/4brins_doudou2_doublegazepoisorblanc.png", "images/technique/4brins_doudou3_doublegazepoisorblanc.png", "images/technique/4brins_doudou4_doublegazepoisorblanc.png"],
+      "couleurs": [
+        {"nom": "Blanc à pois or", "photo": "blanc-a-pois-or.jpeg"},
+        {"nom": "Écru à pois or", "photo": "ecru-a-pois-or.jpeg"},
+        {"nom": "Camel à pois or", "photo": "camel-a-pois-or.jpeg"},
+        {"nom": "Vieux rose à pois or", "photo": "vieux-rose-a-pois-or.jpeg"},
+        {"nom": "Bleu pétrole à pois or", "photo": "bleu-petrole-a-pois-or.jpeg"},
+        {"nom": "Bleu marine à pois or", "photo": "bleu-marine-a-pois-or.jpeg"},
+        {"nom": "Terracotta à pois or", "photo": "terracotta-a-pois-or.jpeg"},
+        {"nom": "Terracotta foncé à pois or", "photo": "terracotta-fonce-a-pois-or.jpeg"},
+        {"nom": "Moutarde à pois or", "photo": "moutarde-a-pois-or.jpeg"},
+        {"nom": "Rose poudré à pois or", "photo": "rose-poudre-a-pois-or.jpeg"}
+      ]
+    },
+    {
+      "id": "nid-abeille",
+      "nom": "Nid d'abeille",
+      "ombrage": true,
+      "dossierPhotos": "images/photos-tissus/nid-abeille",
+      "gabarit3": ["images/technique/3brinsnidabeille1.png", "images/technique/3brinsnidabeille2.png", "images/technique/3brinsnidabeille3.png"],
+      "gabarit4": ["images/technique/4brins_doudou1_nidabeilleblanc.png", "images/technique/4brins_doudou2_nidabeilleblanc.png", "images/technique/4brins_doudou3_nidabeilleblanc.png", "images/technique/4brins_doudou4_nidabeilleblanc.png"],
+      "couleurs": [
+        {"nom": "Beige", "photo": "beige.jpeg"},
+        {"nom": "Gris beige", "photo": "gris-beige.jpeg"},
+        {"nom": "Vieux rose", "photo": "vieux-rose.jpeg"},
+        {"nom": "Terracotta", "photo": "terracotta.jpeg"},
+        {"nom": "Rose clair", "photo": "rose-clair.jpeg"},
+        {"nom": "Rose poudré", "photo": "rose-poudre.jpeg"},
+        {"nom": "Bleu ciel", "photo": "bleu-ciel.jpeg"},
+        {"nom": "Bleu marine", "photo": "bleu-marine.jpeg"},
+        {"nom": "Camel", "photo": "camel.webp"},
+        {"nom": "Taupe", "photo": "taupe.jpeg"},
+        {"nom": "Rose saumon", "photo": "rose-saumon.webp"},
+        {"nom": "Vert sauge", "photo": "vert-sauge.jpeg"},
+        {"nom": "Vert menthe", "photo": "vert-menthe.jpeg"},
+        {"nom": "Beige taupe", "photo": "beige-taupe.jpeg"}
+      ]
+    },
+    {
+      "id": "sherpa",
+      "nom": "Sherpa",
+      "ombrage": true,
+      "dossierPhotos": "images/photos-tissus/sherpa",
+      "gabarit3": ["images/technique/3brins1_sherpablanc.png", "images/technique/3brins2_sherpablanc.png", "images/technique/3brins3_sherpablanc.png"],
+      "gabarit4": ["images/technique/4brins_doudou1_sherpablanc.png", "images/technique/4brins_doudou2_sherpablanc.png", "images/technique/4brins_doudou3_sherpablanc.png", "images/technique/4brins_doudou4_sherpablanc.png"],
+      "couleurs": [
+        {"nom": "Écru", "photo": "ecru.jpeg"},
+        {"nom": "Blanc", "photo": "blanc.jpeg"},
+        {"nom": "Beige clair", "photo": "beige-clair.jpeg"}
+      ]
+    },
+    {
+      "id": "fantaisies",
+      "nom": "Fantaisies",
+      "ombrage": false,
+      "dossierPhotos": "images/photos-tissus/fantaisies",
+      "gabarit3": ["images/technique/3brinsdoudou1.png", "images/technique/3brinsdoudou2.png", "images/technique/3brinsdoudou3.png"],
+      "gabarit4": ["images/technique/4brinsdoudou1.png", "images/technique/4brinsdoudou2.png", "images/technique/4brinsdoudou3.png", "images/technique/4brinsdoudou4.png"],
+      "couleurs": [
+        {"nom": "Rose poudré à pois dorés", "photo": "rose-poudre-a-pois-dores.jpeg"},
+        {"nom": "Fleurs multicolores", "photo": "fleurs-multicolores.jpeg"},
+        {"nom": "Fleurs rouges et bleues", "photo": "fleurs-rouges-et-bleues.jpeg"},
+        {"nom": "Feuillage et petits cœurs dorés", "photo": "feuillage-et-petits-curs-dores.jpeg"},
+        {"nom": "Petits cœurs dorés", "photo": "petits-curs-dores.webp"},
+        {"nom": "Petites fleurs brunes", "photo": "petites-fleurs-brunes.webp"},
+        {"nom": "Fleurs et feuillage gris", "photo": "fleurs-et-feuillage-gris.jpeg"},
+        {"nom": "Petites fleurs roses", "photo": "petites-fleurs-roses.jpeg"},
+        {"nom": "Faon et fleurs", "photo": "faon-et-fleurs.jpeg"},
+        {"nom": "Fleurs roses et feuillage", "photo": "fleurs-roses-et-feuillage.webp"},
+        {"nom": "Animaux de la forêt", "photo": "animaux-de-la-foret.webp"},
+        {"nom": "Arc-en-ciel et bébés animaux", "photo": "arc-en-ciel-et-bebes-animaux.webp"},
+        {"nom": "Jungle tropicale", "photo": "jungle-tropicale.webp"},
+        {"nom": "Petites fleurs rouges", "photo": "petites-fleurs-rouges.jpeg"},
+        {"nom": "Animaux et fleurs", "photo": "animaux-et-fleurs.jpeg"},
+        {"nom": "Animaux de la savane", "photo": "animaux-de-la-savane.webp"},
+        {"nom": "Animaux et feuillage", "photo": "animaux-et-feuillage.jpeg"},
+        {"nom": "Animaux marins et feuillage", "photo": "animaux-marins-et-feuillage.webp"},
+        {"nom": "Fleurs pastel", "photo": "fleurs-pastel.jpeg"},
+        {"nom": "Renards et animaux", "photo": "renards-et-animaux.jpeg"},
+        {"nom": "Montgolfières", "photo": "montgolfieres.webp"},
+        {"nom": "Animaux et motifs", "photo": "animaux-et-motifs.jpeg"}
+      ]
+    }
+  ]
+}
+</script>
+<script src="app.js"></script>
+</body>
+</html>
